@@ -1,0 +1,13 @@
+{
+    "shows": [
+        {
+            "id": 1,
+            "name": "NCL.31 / GETTING AWAY WITH IT",
+            "date": "2021-09-11",
+            "description": "14:00-20:30",
+            "image": "images/GettingAwayWithIt.jpg",
+            "promoter": "NORTH Wrestling NCL",
+            "venue": "Anarchy Brew Co."
+        }
+    ]
+}

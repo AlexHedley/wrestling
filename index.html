@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Wrestling">
+    <meta name="keywords" content="Wrestling">
     <meta name="author" content="Alex Hedley">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -23,7 +23,7 @@
     <!-- Fonts -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'> -->
 
-    <title></title>
+    <title>Wrestling</title>
   </head>
   <body ng-app="myApp">
     
@@ -32,13 +32,13 @@
 
         <section class="jumbotron title-container text-center">
             <div>
-                <h1></h1>
+                <h1>Wrestling</h1>
 
                 <div class="row justify-content-md-center">
                     <div class="col-lg-8">
                         <div class="input-group search-bar">
                             <input type="text" class="form-control" ng-model='searchText' placeholder="Search for a game..." aria-label="Search">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i></button>
                         </div>
                     </div>
                 </div>
@@ -46,14 +46,14 @@
             </div>
         </section>
 
-        <button class="btn btn-warning float-right" type="button" data-toggle="collapse" data-target="#image" aria-expanded="false" aria-controls="image">
+        <!-- <button class="btn btn-primary float-right" type="button" data-toggle="collapse" data-target="#image" aria-expanded="false" aria-controls="image">
             Show/Hide
         </button>
         <div class="collapse" id="image">
             <div class="row justify-content-md-center">
-                <img src="images/.jpeg" width="500px" alt="Game" />
+                <img src="images/wrestling.jpg" width="500px" alt="Game" />
             </div>
-        </div>
+        </div> -->
 
         <br />
 
@@ -72,9 +72,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="game in games">
-                                    <td>{{game.date}}</td>
-                                    <td>{{game.name}}</td>
+                                <tr ng-repeat="show in shows">
+                                    <td>{{show.date}}</td>
+                                    <td>{{show.name}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -89,14 +89,14 @@
 
                         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
-                                <li ng-repeat="set in sets" data-target="#carouselExampleCaptions" data-slide-to="{{$index}}"></li>
+                                <li ng-repeat="show in shows" data-target="#carouselExampleCaptions" data-slide-to="{{$index}}"></li>
                             </ol>
                             <div class="carousel-inner">
-                                <div ng-repeat="game in games" class="carousel-item" ng-class='{active:$first}'>
-                                    <img src="/PROJECT/{{game.image}}" class="d-block w-100" alt="{{game.name}}">
+                                <div ng-repeat="show in shows" class="carousel-item" ng-class='{active:$first}'>
+                                    <img src="/wrestling/{{show.image}}" class="d-block w-100" alt="{{show.name}}">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <h5>{{game.name}}</h5>
-                                        <p>{{game.description}}</p>
+                                        <h5>{{show.name}}</h5>
+                                        <p>{{show.description}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -116,40 +116,17 @@
                 <br />
                 
                 <div class="row">
-                    <div class="col">
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="ui" ng-model="ui" ng-change="generatePivot()">
-                            <label class="form-check-label" for="ui">UI</label>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-
-                        <div id="output" style="margin: 30px;">
-                            <p>Table...</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="row">
                     <div 
-                        ng-repeat="game in games | filter:searchText"
+                        ng-repeat="show in shows | filter:searchText"
                         class="col-md-4"
                         style="margin-bottom: 50px;"
                     >
                         <div class="card" style="width: 18rem;">
+                            <img src="/wrestling/{{show.image}}" class="d-block w-100" alt="{{show.name}}">
                             <div class="card-body">
-                                <h5 class="card-title">{{game.name}}</h5>
-                                <p class="card-text">{{game.description}}</p>
-                                <p class="card-text">{{game.date | date:'d MMM yyyy'}}</p>
-                                <div ng-repeat="player in game.players">
-                                    <p>{{player.name}} <span ng-if="player.winner"><strong>Winner</strong></span></p>
-                                </div>
+                                <h5 class="card-title">{{show.name}}</h5>
+                                <p class="card-text">{{show.description}}</p>
+                                <p class="card-text">{{show.date | date:'d MMM yyyy'}}</p>
                             </div>
                         </div>
                     </div>
